@@ -6,11 +6,8 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
-      "assets": [
-        "assets",
-        "favicon.ico"
-      ],
+      "outDir": "../public",
+      "assets": ["assets", "favicon.ico"],
       "index": "index.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
@@ -19,9 +16,16 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "assets/css/bootstrap.min.css",
+        "assets/css/now-ui-dashboard.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "assets/js/core/jquery.min.js",
+        "assets/js/core/popper.min.js",
+        "assets/js/core/bootstrap.min.js",
+        "assets/js/now-ui-dashboard.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

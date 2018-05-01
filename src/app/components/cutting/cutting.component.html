@@ -1,0 +1,47 @@
+<div class="card text-center">
+  <div class="card-header">
+    Toady's Orders
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-3" *ngFor="let breakup of breakups; index as i">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category">{{breakup.order_name}}</h5>
+            <h4 class="card-title">Quantity: {{breakup.quantity}}</h4>
+          </div>
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Status: {{breakup.status}}</h6>
+            <button class="btn btn-info btn-md" (click)="completeBreakups(i, breakup._id)">Complete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+
+<div class="card text-center">
+  <div class="card-header">
+    Toady's Completed Orders
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-3" *ngFor="let breakup of comBreakups; index as i">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category">{{breakup.order_name}}</h5>
+            <h4 class="card-title">Quantity: {{breakup.quantity}}</h4>
+          </div>
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Status: {{breakup.status}}</h6>
+            <button class="btn btn-success btn-md" (click)="sendingSuperMarket(i, breakup._id)">Send To Supermarket</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>

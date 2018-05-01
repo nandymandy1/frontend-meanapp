@@ -1,0 +1,124 @@
+<button (click)="onClickAddStyle()" class="btn btn-primary">Add Style</button>
+<button (click)="onClickAddOrder()" class="btn btn-primary">Add Order</button>
+<button (click)="onClickAddBreakup()" class="btn btn-primary">Add Order Breakup</button>
+
+<!-- Add OrderBreakup-->
+<div class="card w-35 mt-2 mx-auto" *ngIf="addBreakup">
+    <div class="card-body">
+        <h5 class="card-title">Add New Order Breaup</h5>
+        <form (submit)="submitBreakup()">
+            <div class="form-group">
+                <label>Order Name</label>
+                <select class="custom-select form-control" name="order_id" [(ngModel)]="order_id">
+                    <option *ngFor="let order of orders" value="{{order._id}}">{{order.order_name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Quantity</label>
+                <input type="text" class="form-control" name="quantity" placeholder="Quantity" [(ngModel)]="quantity">
+            </div>
+            <div class="form-group">
+                <label>Loading Date</label>
+                <input type="date" class="form-control" name="loading_date" placeholder="Loading Date" [(ngModel)]="loading_date">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+    </div>
+</div>
+
+<!-- Add Order-->
+<div class="card w-35 mt-2 mx-auto" *ngIf="addOrder">
+    <div class="card-body">
+        <h5 class="card-title">Add New Order</h5>
+        <form (submit)="submitOrder()">
+            <div class="form-group">
+                <label>Order Name</label>
+                <input type="text" class="form-control" name="order_name" placeholder="Order Name" [(ngModel)]="order_name">
+            </div>
+            <div class="form-group">
+                <label>Delivery Date</label>
+                <input type="date" class="form-control" name="delivery_date" placeholder="Delivery Date" [(ngModel)]="delivery_date">
+            </div>
+            <div class="form-group">
+                <label>Style</label>
+                <select class="custom-select form-control" name="style_id" [(ngModel)]="style_id">
+                    <option *ngFor="let style of styles" value="{{style._id}}">{{style.style_name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Quantity</label>
+                <input type="number" class="form-control" name="quantity" placeholder="Quantity" [(ngModel)]="quantity">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+    </div>
+</div>
+
+<!--Add Style-->
+<div class="card w-35 mt-2 mx-auto" *ngIf="addStyle">
+    <div class="card-body">
+        <h5 class="card-title">Add New Style</h5>
+        <form (submit)="styleSubmit()">
+            <div class="form-group">
+                <label>Style
+                </label>
+                <input type="text" class="form-control" name="style_name" placeholder="Style Name" [(ngModel)]="style_name">
+            </div>
+            <div class="form-group">
+                <label>Brand Name
+                </label>
+                <input type="text" class="form-control" name="brand_name" placeholder="Brand Name" [(ngModel)]="brand_name">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+    </div>
+</div>
+
+<!--All the Order Breakups-->
+<h3>Recent Breakups</h3>
+<div class="row">
+    <div class="col-lg-3" *ngFor="let breakup of breakups; index as i">
+        <div class="card card-chart">
+            <div class="card-header">
+                <h5 class="card-category">{{breakup.order_name}}</h5>
+                <h4 class="card-title">Quantity: {{breakup.quantity}}</h4>
+            </div>
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Status: {{breakup.status}}</h6>
+                <button class="btn btn-danger btn-md" (click)="deleteBreakup(i, breakup._id)">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Get all the Orders-->
+<h3>Recent Orders</h3>
+<div class="row">
+    <div class="col-lg-3" *ngFor="let order of orders; index as i">
+        <div class="card card-chart">
+            <div class="card-header">
+                <h5 class="card-category">{{order.order_name}}</h5>
+                <h4 class="card-title">Quantity: {{order.quantity}}</h4>
+            </div>
+            <div class="card-body">
+                <button class="btn btn-danger btn-md" (click)="deleteOrders(i, order._id)">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Get All the Styles From the Database-->
+<h3>Recent Styles</h3>
+<div class="row">
+    <div class="col-lg-4" *ngFor="let style of styles; index as i">
+        <div class="card card-chart">
+            <div class="card-header">
+                <h5 class="card-title">Name: {{style.style_name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Brand: {{style.brand_name}}</h6>
+            </div>
+            <div class="card-body">
+                <button class="btn btn-md btn-danger" (click)="deleteStyles(i, style._id)">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

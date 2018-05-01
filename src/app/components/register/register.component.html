@@ -1,0 +1,42 @@
+<div class="card w-35 mx-auto">
+  <div class="card-body">
+    <h5 class="card-title">Register</h5>
+    <form (submit)="onRegister()">
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Username" [(ngModel)]="username">
+      </div>
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" class="form-control" placeholder="Name" [(ngModel)]="name">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" name="email" class="form-control" placeholder="Email" [(ngModel)]="email">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Password" [(ngModel)]="password">
+      </div>
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" name="c_password" class="form-control" placeholder="Confirm Password" [(ngModel)]="c_password">
+      </div>
+      <div class="form-group">
+        <label>Factory Name</label>
+        <select class="custom-select form-control" name="factory" [(ngModel)]="factory">
+          <option selected="">Choose Your Factory Here</option>
+          <option *ngFor="let fact of factories" value="{{fact._id}}">{{fact.factory_name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Job Title</label>
+        <select class="custom-select form-control" name="jobTitle" [(ngModel)]="jobTitle">
+          <option selected="">Choose your Job Here</option>
+          <option *ngFor="let job of jobs" value="{{job}}">{{job}}</option>
+        </select>
+      </div>
+      <input type="submit" value="Register" class="btn btn-primary">
+    </form>
+  </div>
+</div>
